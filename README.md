@@ -11,11 +11,21 @@ Challenge du parcours Wordpress BeCode.
 
 ### Prerequis
 
-Cloner le repo et modifier le fichier wp-config avec vos informations de connexion à votre base de donnée.
+1. Cloner le repo
+2. Accéder aux fichiers de sauvegarde (wp-content/ai1wm-backups/)
+3. Importer le fichier de sauvegard avec le plugin : All in one migration
+4. Modifier le contenu du wp-config.php avec vos identifiants BDD.
 
 ### Plugins utilisés
 
-Yoast SEO (https://yoast.com/wordpress/plugins/seo/)
+- AccessPress Social Counter (https://fr.wordpress.org/plugins/accesspress-social-counter/)
+- All in One WP Migration (https://fr.wordpress.org/plugins/all-in-one-wp-migration/)
+- All in one WP Migration File Extension (https://import.wp-migration.com/)
+- Content Views (https://fr.wordpress.org/plugins/content-views-query-and-display-post-page/)
+- Font Awesome (https://fr.wordpress.org/plugins/font-awesome/)
+- Social Media and Share icons (https://fr.wordpress.org/plugins/ultimate-social-media-icons/)
+- Yoast SEO (https://yoast.com/wordpress/plugins/seo/)
+
 
 ### Thème utilisé et modifié
 
