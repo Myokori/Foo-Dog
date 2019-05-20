@@ -1,0 +1,96 @@
+/*
+Theme Name: ruby v2
+Description: Thème Foo Dog
+Author: Woods Students
+Template: ruby
+Version: 1.0
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/*font-family: 'Open Sans', sans-serif;*/
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+/* font-family: 'Crimson Text', serif;*/
+
+/* Modification background body */
+body{
+	background-color:#fff;
+}
+/* Modifie la couleur des icones fontawesome */
+.ico-top{
+	color:black;
+}
+/* Retire la bordure en dessous des icones sociales */
+.header-top-nav{
+	border-bottom:0px;
+}
+/* Modifie le titre */
+.site-title a{
+	font-family: 'Crimson Text', serif;
+	font-size:50px;
+	color:black !important;
+	font-weight:bold;
+}
+/* Modifie le bg du titre */
+.site-header{
+	background-color:#fff !important;
+}
+/* Rajoute une margin bottom au titre */
+.site-branding .site-title{
+	margin-bottom:1.5rem;
+}
+
+/* Modifie la barre de navigation */
+nav{
+	font-family: 'Crimson Text', serif;
+	color:black;	
+}
+.header-nav-wrapper{
+	box-shadow:0 0 0;
+}
+.main-navigation .navbar-nav {
+	width: 100%;
+	text-align: center;
+	font-weight:bold;
+}
+.navbar-nav > li {
+	float: none;
+	display: inline-block;
+}
+#site-navigation .col-sm-12 .navbar-toggleable-xs{
+	float:none;
+	border-bottom:1px solid rgba(128,128,128, .2);
+}
+/* Retirer le titre d'une page */
+h1.entry-title{
+	display:none;
+}
+/* Modifier l'emplacement du content */
+.home-widget-inner{
+	margin-top:-12em;
+}
+/* Modification du CSS du social counter */
+.apsc-theme-4 .apsc-each-profile{
+	float:none;
+	margin:0.1em;
+	font-family: 'Open Sans', sans-serif;
+}
+.apsc-theme-4 .apsc-count{
+	font-size:14px;
+	text-align:center;
+}
+.apsc-theme-4 .media-name{
+	font-size:14px;
+	font-weight:bold;
+	margin:10px;
+}
+.apsc-theme-4 .social-icon .fa{
+	padding:5px;
+}
+
+/* Modification margin du post grid droite */
+/*.pt-cv-colsys [data-cvc="11"] .col-md-1:nth-child(11n+1), .pt-cv-colsys [data-cvc="12"] .col-md-1:nth-child(12n+1), .pt-cv-colsys [data-cvc="2"] .col-md-6:nth-child(2n+1), .pt-cv-colsys [data-cvc="3"] .col-md-4:nth-child(3n+1), .pt-cv-colsys [data-cvc="4"] .col-md-3:nth-child(4n+1), .pt-cv-colsys [data-cvc="5"] .col-md-2:nth-child(5n+1), .pt-cv-colsys [data-cvc="6"] .col-md-2:nth-child(6n+1), .pt-cv-colsys [data-cvc="7"] .col-md-1:nth-child(7n+1), .pt-cv-colsys [data-cvc="8"] .col-md-1:nth-child(8n+1), .pt-cv-colsys [data-cvc="9"] .col-md-1:nth-child(9n+1), .pt-cv-colsys [data-cvc="10"] .col-md-1:nth-child(10n+1){
+	margin-bottom:25px;
+	text-align:center;
+}*/
+
+
