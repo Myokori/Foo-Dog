@@ -199,6 +199,24 @@ function ruby_header_menu() {
 } /* end header menu */
 }
 
+/*
+TENTATIVE MENU NON CONCLUANTE POUR CREER LE BURGER. NON CLIQUABLE QUAND ON CHANGE DE FONCTION.
+if ( ! function_exists( 'ruby_header_burger' ) ) {
+
+	function ruby_header_burger() {
+		// display the WordPress Custom Menu if available
+		wp_nav_menu(array(
+			'theme_location'    => 'primary',
+			'depth'             => 6,
+			'container'         => 'div',
+			'container_class'   => 'collapse navbar-toggleable-xs navbar-ex1-collapse',
+			'menu_class'        => 'nav navbar-nav',
+			'fallback_cb'       => 'Ruby_Bootstrap_Navwalker::fallback',
+			'walker'            => new Ruby_Bootstrap_Navwalker()
+		));
+	}
+	}*/
+
 if ( ! function_exists( 'ruby_footer_menu' ) ) {
 /**
  * Footer menu (should you choose to use one)
@@ -265,7 +283,7 @@ function ruby_woomenucart( $menu, $args ) {
 	// Adds a serach form to a menu assigned to Primary Navigation Menu location
 	if ( 'header' == $args->theme_location && get_theme_mod( 'ruby_search_form_in_header', 1 ) ) {
 
-		$menu_item = '<li class="menu-item search-menu"><span class="search-nav ico-top"><i class="fa fa-search"></i></span>';
+		$menu_item = '<li class="menu-item search-menu"><span><i class="fa fa-search fa-lg"></i></span>';
 
 		$menu_item .= get_search_form( false ) . '</li>';
 

@@ -109,7 +109,7 @@
         <div class="supportforum">
             <div class="support-container">
                 <div class="have-questions">
-                    <img src="<?php echo SFSI_PLUGURL ?>images/question.png">
+                    <img src="<?php echo SFSI_PLUGURL ?>images/question.png" alt="error">
                     <p class="have-quest">Have questions?</p>
                     <!-- <p class="ask-question">Ask them in the...</p> -->
                 </div>
@@ -187,7 +187,7 @@
 
     <div class="tab10">
          <div class="save_button">
-          <img src="<?php echo SFSI_PLUGURL; ?>images/ajax-loader.gif" class="loader-img" />
+          <img src="<?php echo SFSI_PLUGURL; ?>images/ajax-loader.gif" class="loader-img" alt="error" />
         <a href="javascript:;" id="save_all_settings" title="Save All Settings">Save All Settings</a>
      </div>
      <p class="red_txt errorMsg" style="display:none"> </p>
@@ -207,7 +207,7 @@
         <input type="text" name="domain" id="sfsi_domain_input" style="width:40%;min-height: :40px;text-align:center;margin:0 auto" placeholder="Enter Domian to check its theme" />
         <input type="text" name="sfsi_domain_input_nonce"  value="<?php echo wp_create_nonce('bannerOption'); ?>">
         <div class="save_button">
-          <img src="<?php echo SFSI_PLUGURL; ?>images/ajax-loader.gif" class="loader-img" />
+          <img src="<?php echo SFSI_PLUGURL; ?>images/ajax-loader.gif" class="loader-img" alt="error" />
         <a href="javascript:;" id="sfsi_check_theme_of_domain_btn" title="Check">Check the Theme</a>
     </div>
     <script type="text/javascript">

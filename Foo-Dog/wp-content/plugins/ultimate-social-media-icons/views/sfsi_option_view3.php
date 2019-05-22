@@ -244,7 +244,7 @@ $mouseover_other_icons_transition_effect = (isset($option3['mouseover_other_icon
 
 	<!-- SAVE BUTTON SECTION   --> 
 	<div class="save_button tab_3_sav">
-	     <img src="<?php echo SFSI_PLUGURL ?>images/ajax-loader.gif" class="loader-img" />
+	     <img src="<?php echo SFSI_PLUGURL ?>images/ajax-loader.gif" class="loader-img" alt="error" />
          <?php  $nonce = wp_create_nonce("update_step3"); ?>
 	     <a href="javascript:;" id="sfsi_save3" title="Save" data-nonce="<?php echo $nonce;?>">Save</a>
 	</div>

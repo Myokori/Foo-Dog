@@ -138,11 +138,11 @@ function sfsi_Subscribelike($permalink, $show_count)
 	 
    if($sfsi_section6_options['sfsi_icons_DisplayCounts']=="yes")
    {
-	 	$icon = '<a href="'.$url.'" target="_blank"><img src="'.SFSI_PLUGURL.'images/follow_subscribe.png" /></a><span class="bot_no">'.$counts.'</span>';
+	 	$icon = '<a href="'.$url.'" target="_blank"><img src="'.SFSI_PLUGURL.'images/follow_subscribe.png" alt="error" /></a><span class="bot_no">'.$counts.'</span>';
    }
    else
    {
-	   $icon = '<a href="'.$url.'" target="_blank"><img src="'.SFSI_PLUGURL.'images/follow_subscribe.png" /></a>';
+	   $icon = '<a href="'.$url.'" target="_blank"><img src="'.SFSI_PLUGURL.'images/follow_subscribe.png" alt="error" /></a>';
    }
    return $icon;
 }
@@ -204,15 +204,15 @@ function sfsi_FBlike($permalink,$show_count)
 	$option6 =  unserialize(get_option('sfsi_section6_options',false));
 	if($option6['sfsi_rectfbshare'] == 'yes' && $option6['sfsi_rectfb'] == 'yes')
 	{
-		$fb_like_html .='<div class="fb-like" href="'.$permalink.'" width="'.$width.'" send="'.$send.'" showfaces="false"  action="like" data-share="true"';
+		$fb_like_html .='<div class="fb-like" data-href="'.$permalink.'" data-width="'.$width.'" data-send="'.$send.'" data-show-faces="false"  data-action="like" data-share="true"';
 	}
 	else if($option6['sfsi_rectfb'] == 'no' && $option6['sfsi_rectfbshare'] == 'yes')
 	{
-		$fb_like_html .= '<div class="fb-share-button" href="'.$permalink.'" width="'.$width.'" send="'.$send.'" ';
+		$fb_like_html .= '<div class="fb-share-button" href="'.$permalink.'" data-width="'.$width.'" data-send="'.$send.'" ';
 	}
 	else
 	{
-		$fb_like_html .= '<div class="fb-like" href="'.$permalink.'" width="'.$width.'" send="'.$send.'" showfaces="false"  action="like" data-share="false" ';
+		$fb_like_html .= '<div class="fb-like" data-href="'.$permalink.'" data-width="'.$width.'" data-send="'.$send.'" data-show-faces="false"  data-action="like" data-share="false" ';
 	}
 	if($show_count==1)
 	{ 
@@ -320,35 +320,26 @@ function sfsi_footer_script()
 	<?php
 	}
 	
-  //Murt Code get domain
-	function getDomain($url){
-		$pieces = parse_url($url);
-		$domain = isset($pieces['host']) ? $pieces['host'] : '';
-		if(preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)){
-			return $regs['domain'];
-		}
-		return FALSE;
-	}
-
 	/* activate footer credit link */
 	if(get_option('sfsi_footer_sec')=="yes")
 	{
 		if(!is_admin())
 		{   
-				//$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000; absolute; text-align: center;">Social media & sharing icons powered by  <a href="https://wordpress.org/plugins/ultimate-social-media-icons/" target="_new">UltimatelySocial</a> ';
+				//$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000; absolute; text-align: center;">Social media & sharing icons powered by  <a href="https://wordpress.org/plugins/ultimate-social-media-icons/" target="new">UltimatelySocial</a> ';
 		
-		$domain = getDomain(get_site_url());
+		$sfsi_themecheck = new sfsi_ThemeCheck(); 
+		$domain 	= $sfsi_themecheck->sfsi_plus_getdomain(get_site_url());
 		$firstCharacter = substr($domain, 0, 1);
 		if(in_array($firstCharacter ,array('a','b','c','d','e','f','g','h','i','j','k','l','m'))){
-			$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000; absolute; text-align: center;">Social media & sharing icons  powered by <a href="https://www.ultimatelysocial.com/?utm_source=usmplus_settings_page&utm_campaign=credit_link_to_homepage&utm_medium=banner" target="_new">UltimatelySocial </a>';
+			$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000; text-align: center;">Social media & sharing icons  powered by <a href="https://www.ultimatelysocial.com/?utm_source=usmplus_settings_page&utm_campaign=credit_link_to_homepage&utm_medium=banner" target="new">UltimatelySocial </a>';
 			$footer_link.="</div>";
 			echo $footer_link;
 		}else if(in_array($firstCharacter ,array('n','o','p','q','r','s'))){
-			$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000; absolute; text-align: center;"><a href="https://www.ultimatelysocial.com/usm-premium/" target="_new">Wordpress Social Share Plugin </a> powered by Ultimatelysocial';
+			$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000; text-align: center;"><a href="https://www.ultimatelysocial.com/usm-premium/" target="new">Wordpress Social Share Plugin </a> powered by Ultimatelysocial';
 			$footer_link.="</div>";
 			echo $footer_link;
 		}else{
-			$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000; absolute; text-align: center;"><a href="https://www.ultimatelysocial.com/?utm_source=usmplus_settings_page&utm_campaign=credit_link_to_homepage&utm_medium=banner" target="_new">Social Share Buttons and Icons</a> powered by Ultimatelysocial';
+			$footer_link='<div class="sfsiplus_footerLnk" style="margin: 0 auto;z-index:1000;text-align: center;"><a href="https://www.ultimatelysocial.com/?utm_source=usmplus_settings_page&utm_campaign=credit_link_to_homepage&utm_medium=banner" target="new">Social Share Buttons and Icons</a> powered by Ultimatelysocial';
 			$footer_link.="</div>";
 			echo $footer_link;
 		} 

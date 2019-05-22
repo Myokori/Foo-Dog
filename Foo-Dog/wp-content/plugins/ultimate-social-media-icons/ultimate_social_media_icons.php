@@ -5,7 +5,7 @@ Plugin URI: http://ultimatelysocial.com
 Description: Easy to use and 100% FREE social media plugin which adds social media icons to your website with tons of customization features!. 
 Author: UltimatelySocial
 Author URI: http://ultimatelysocial.com
-Version: 2.2.2
+Version: 2.2.4
 License: GPLv2 or later
 */
 
@@ -65,7 +65,7 @@ register_activation_hook(__FILE__, 'sfsi_activate_plugin' );
 register_deactivation_hook(__FILE__, 'sfsi_deactivate_plugin');
 register_uninstall_hook(__FILE__, 'sfsi_Unistall_plugin');
 
-if(!get_option('sfsi_pluginVersion') || get_option('sfsi_pluginVersion') < 2.22)
+if(!get_option('sfsi_pluginVersion') || get_option('sfsi_pluginVersion') < 2.24)
 {
 	add_action("init", "sfsi_update_plugin");
 }
@@ -254,22 +254,24 @@ if(is_admin())
 
 function sfsi_getverification_code()
 {
+
 	$feed_id = sanitize_text_field(get_option('sfsi_feed_id'));
-	$curl = curl_init();  
-    curl_setopt_array($curl, array(
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_URL => 'http://www.specificfeeds.com/wordpress/getVerifiedCode_plugin',
-        CURLOPT_USERAGENT => 'sf get verification',
-        CURLOPT_POST => 1,
-        CURLOPT_POSTFIELDS => array(
+	$response = wp_remote_post( 'https://www.specificfeeds.com/wordpress/getVerifiedCode_plugin', array(
+        'blocking' => true,
+        'user-agent' => 'sf get verification',
+        'body' => array(
             'feed_id' => $feed_id
         )
     ));
-     // Send the request & save response to $resp
-	$resp = curl_exec($curl);
-	$resp = json_decode($resp);
-	update_option('sfsi_verificatiom_code', $resp->code);
-	curl_close($curl);
+    
+	// Send the request & save response to $resp
+	if ( is_wp_error( $response ) ) {
+   		$error_message = $response->get_error_message();
+	   	return false;
+	} else {
+	   	$resp = json_decode($response['body']);
+		update_option('sfsi_verificatiom_code', $resp->code);
+	}
 }
 
 //checking for the youtube username and channel id option
@@ -505,7 +507,8 @@ function sfsi_admin_notice()
 	/**
 	 * Premium Notification
 	 */
-	$domain 	= sfsi_getdomain(site_url());
+	$sfsi_themecheck = new sfsi_ThemeCheck(); 
+	$domain 	= $sfsi_themecheck->sfsi_plus_getdomain(site_url());
 	$siteMatch 	= false;
 	
 	if(!empty($domain))
@@ -947,16 +950,6 @@ function sfsi_get_bloginfo($url)
 	}
 	return $web_url;
 }
-
-function sfsi_getdomain($url)
-{
-	$pieces = parse_url($url);
-	$domain = isset($pieces['host']) ? $pieces['host'] : '';
-	if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
-		return $regs['domain'];
-	}
-	return false;
-}
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), "sfsi_actionLinks", -10 );
 function sfsi_actionLinks($links)
 {
@@ -1076,7 +1069,7 @@ function sfsi_curl_error_notification()
 	            We noticed that your site returns a cURL error («Error:  
 	            <?php  echo ucfirst(get_option("sfsi_curlErrorMessage")); ?>
 	            »). This means that it cannot send a notification to SpecificFeeds.com when a new post is published. Therefore this email-feature doesn’t work. However there are several solutions for this, please visit our FAQ to see the solutions («Perceived bugs» => «cURL error messages»): 
-	            <a href="https://www.ultimatelysocial.com/faq/" target="_new">
+	            <a href="https://www.ultimatelysocial.com/faq/" target="new">
 	                www.ultimatelysocial.com/faq
 	            </a>
 	           <div class="sfsi_curlerror_cross">Dismiss</div>
@@ -1338,7 +1331,7 @@ function sfsi_ask_for_help($viewNumber){ ?>
 
     <div class="sfsi_askforhelp askhelpInview<?php echo $viewNumber; ?>">
 	
-		<img src="<?php echo SFSI_PLUGURL."images/questionmark.png";?>"/>
+		<img src="<?php echo SFSI_PLUGURL."images/questionmark.png";?>" alt="error"/>
 		
 		<span>Questions? <a target="_blank" href="#" onclick="event.preventDefault();sfsi_open_chat(event)"><b>Ask us</b></a></span>
 

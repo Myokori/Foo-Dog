@@ -4,13 +4,15 @@ function sfsi_update_plugin()
     if ($feed_id = get_option('sfsi_feed_id')) {
         if (is_numeric($feed_id)) {
             $sfsiId = SFSI_updateFeedUrl();
-            update_option('sfsi_feed_id', sanitize_text_field($sfsiId->feed_id));
-            update_option('sfsi_redirect_url', esc_url($sfsiId->redirect_url));
+            if(false!==$sfsiId){
+                update_option('sfsi_feed_id', sanitize_text_field($sfsiId->feed_id));
+                update_option('sfsi_redirect_url', esc_url($sfsiId->redirect_url));
+            }
         }
     }
 
     //Install version
-    update_option("sfsi_pluginVersion", "2.22");
+    update_option("sfsi_pluginVersion", "2.24");
 
     if (!get_option('sfsi_serverphpVersionnotification')) {
         add_option("sfsi_serverphpVersionnotification", "yes");
@@ -55,10 +57,15 @@ function sfsi_update_plugin()
         );
         add_option('sfsi_instagram_sf_count',  serialize($sfsi_instagram_sf_count));
     } else {
-        $sfsi_instagram_sf_count = unserialize(get_option('sfsi_instagram_sf_count', false));
-        $sfsi_instagram_sf_count["date_sf"] = isset($sfsi_instagram_sf_count["date"])?$sfsi_instagram_sf_count["date"]:'';
-        $sfsi_instagram_sf_count["date_instagram"] = isset($sfsi_instagram_sf_count["date"])?$sfsi_instagram_sf_count["date"]:'';
-        update_option('sfsi_instagram_sf_count', $sfsi_instagram_sf_count);
+        $sfsi_instagram_sf_count = get_option('sfsi_instagram_sf_count',false);
+        if(!is_array($sfsi_instagram_sf_count)){
+            $sfsi_instagram_sf_count = unserialize(get_option('sfsi_instagram_sf_count',false));
+        }
+        if(!isset($sfsi_instagram_sf_count["date_sf"]) || !isset($sfsi_instagram_sf_count["date_instagram"])){
+            $sfsi_instagram_sf_count["date_sf"] = isset($sfsi_instagram_sf_count["date"])?$sfsi_instagram_sf_count["date"]:'';
+            $sfsi_instagram_sf_count["date_instagram"] = isset($sfsi_instagram_sf_count["date"])?$sfsi_instagram_sf_count["date"]:'';
+        }
+        update_option('sfsi_instagram_sf_count', serialize($sfsi_instagram_sf_count) );
     }
 
     $option4 = unserialize(get_option('sfsi_section4_options', false));
@@ -359,7 +366,6 @@ function sfsi_update_plugin()
             $sfsi_disable_floaticons        = $option5['sfsi_disable_floaticons'];
             unset($option5['sfsi_disable_floaticons']);
         }
-
         if (!isset($option5['sfsi_custom_social_hide'])) {
             $option5['sfsi_custom_social_hide']    = 'no';
         }
@@ -379,7 +385,25 @@ function sfsi_update_plugin()
         if (!isset($option5['sfsi_wechatIcon_order'])) {
             $option5['sfsi_wechatIcon_order']    = '15';
         }
-
+        if (!isset($option5['sfsi_telegram_MouseOverText'])) {
+            $option5['sfsi_telegram_MouseOverText']    = 'Telegram';
+        }
+        if (!isset($option5['sfsi_vk_MouseOverText'])) {
+            $option5['sfsi_vk_MouseOverText']    = 'VK';
+        }
+        if (!isset($option5['sfsi_ok_MouseOverText'])) {
+            $option5['sfsi_ok_MouseOverText']    = 'OK';
+        }
+        if (!isset($option5['sfsi_weibo_MouseOverText'])) {
+            $option5['sfsi_weibo_MouseOverText']    = 'Weibo';
+        }
+        if (!isset($option5['sfsi_wechat_MouseOverText'])) {
+            $option5['sfsi_wechat_MouseOverText']    = 'WeChat';
+        }
+        if (!isset($option5['sfsi_wechat_MouseOverText'])) {
+            $option5['sfsi_wechat_MouseOverText']    = 'WeChat';
+        }
+        
         if (!isset($option5['sfsi_pplus_icons_suppress_errors'])) {
 
             $sup_errors = "no";
@@ -454,6 +478,29 @@ function sfsi_update_plugin()
 
     update_option('sfsi_section9_options', serialize($option9));
 
+    $option1 = unserialize(get_option('sfsi_section1_options', false));
+    if(!isset($option1['sfsi_telegram_display'])){
+        $option1['sfsi_telegram_display']="no";
+    }
+    if(!isset($option1['sfsi_vk_display'])){
+        $option1['sfsi_vk_display']="no";
+    }
+    if(!isset($option1['sfsi_ok_display'])){
+        $option1['sfsi_ok_display']="no";
+    }
+    if(!isset($option1['sfsi_wechat_display'])){
+        $option1['sfsi_wechat_display']="no";
+    }
+    if(!isset($option1['sfsi_weibo_display'])){
+        $option1['sfsi_weibo_display']="no";
+    }
+    if(!isset($option1['sfsi_telegram_display'])){
+        $option1['sfsi_vk_display']="no";
+    }
+    if(!isset($option1['sfsi_telegram_display'])){
+        $option1['sfsi_vk_display']="no";
+    }
+    update_option('sfsi_section1_options', serialize($option1));
     // Add this removed in version 2.0.2, removing values from section 1 & section 6 & setting notice display value
     sfsi_was_displaying_addthis();
 }
@@ -880,21 +927,18 @@ function sfsi_deactivate_plugin()
 
 function sfsi_updateFeedPing($status, $feed_id)
 {
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_URL => 'http://www.specificfeeds.com/wordpress/pingfeed',
-        CURLOPT_USERAGENT => 'sf rss request',
-        CURLOPT_POST => 1,
-        CURLOPT_POSTFIELDS => array(
+    $curl = wp_remote_post( 'https://www.specificfeeds.com/wordpress/pingfeed',array(
+        'blocking' => true,
+        // 'CURLOPT_URL' => 'https://www.specificfeeds.com/wordpress/pingfeed',
+        'user-agent' => 'sf rss request',
+        'body' => array(
             'feed_id' => $feed_id,
             'status' => $status
         )
     ));
     // Send the request & save response to $resp
-    $resp = curl_exec($curl);
-    $resp = json_decode($resp);
-    curl_close($curl);
+    // $resp = $curl['body'];
+    // $resp = json_decode($resp);
 }
 /* unistall plugin function */
 function sfsi_Unistall_plugin()
@@ -951,11 +995,13 @@ function curl_enable_notice()
 /* add admin menus */
 function sfsi_admin_menu()
 {
-    $sfsi_pm = '<div style="font-family:font-family	Example text
-    Arial, Helvetica, sans-serif;"> Ultimate Social Media Icons </div>';
+    $sfsi_pm = '
+     <div style="font-family:font-family    Example text
+        Arial, Helvetica, sans-serif; "> Ultimate Social Media Icons </div>
+    ';
     add_menu_page(
         'Ultimate Social Media Icons',
-        $sfsi_pm,
+        'Ultimate Social Media Icons',
         'administrator',
         'sfsi-options',
         'sfsi_options_page',
@@ -976,14 +1022,11 @@ if (is_admin()) {
 /* fetch rss url from specificfeeds */
 function SFSI_getFeedUrl()
 {
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_URL => 'http://www.specificfeeds.com/wordpress/plugin_setup',
-        CURLOPT_USERAGENT => 'sf rss request',
-        CURLOPT_POST => 1,
-        CURLOPT_POSTFIELDS => array(
+    $curl = wp_remote_post('https://www.specificfeeds.com/wordpress/plugin_setup', array(
+        'blocking' => true,
+        // 'CURLOPT_URL' => 'https://www.specificfeeds.com/wordpress/plugin_setup',
+        'user-agent' => 'sf rss request',
+        'body' => array(
             'web_url'   => get_bloginfo('url'),
             'feed_url'  => sfsi_get_bloginfo('rss2_url'),
             'email'     => '',
@@ -991,29 +1034,28 @@ function SFSI_getFeedUrl()
         )
     ));
     // Send the request & save response to $resp
-    $resp = curl_exec($curl);
-    if (curl_errno($curl)) {
+    // $resp = curl_exec($curl);
+    if(is_wp_error($curl))
+    {
         update_option("sfsi_curlErrorNotices", "yes");
-        update_option("sfsi_curlErrorMessage", curl_errno($curl));
+        update_option("sfsi_curlErrorMessage", is_wp_error($curl));
+        return false;
     }
-    $resp = json_decode($resp);
-    curl_close($curl);
-
-    $feed_url = stripslashes_deep($resp->redirect_url);
-    return $resp;
-    exit;
+    else{
+        $resp = json_decode($curl['body']);
+        $feed_url = stripslashes_deep($resp->redirect_url);
+        return $resp;
+    }
+    exit;    
 }
 /* fetch rss url from specificfeeds on */
 function SFSI_updateFeedUrl()
 {
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_URL => 'http://www.specificfeeds.com/wordpress/updateFeedPlugin',
-        CURLOPT_USERAGENT => 'sf rss request',
-        CURLOPT_POST => 1,
-        CURLOPT_POSTFIELDS => array(
+    $curl = wp_remote_post('https://www.specificfeeds.com/wordpress/updateFeedPlugin', array(
+        'blocking' => true,
+        // 'CURLOPT_URL' => 'https://www.specificfeeds.com/wordpress/updateFeedPlugin',
+        'user-agent' => 'sf rss request',
+        'body' => array(
             'feed_id'   => sanitize_text_field(get_option('sfsi_feed_id')),
             'web_url'   => get_bloginfo('url'),
             'feed_url'  => sfsi_get_bloginfo('rss2_url'),
@@ -1021,26 +1063,29 @@ function SFSI_updateFeedUrl()
         )
     ));
     // Send the request & save response to $resp
-    $resp = curl_exec($curl);
-    $resp = json_decode($resp);
-    curl_close($curl);
-
-    $feed_url = stripslashes_deep($resp->redirect_url);
-    return $resp;
-    exit;
+    // $resp = curl_exec($curl);
+    // $resp = json_decode($resp);
+    // curl_close($curl);
+    if(is_wp_error($curl)){
+        $error = $curl->get_error_message();
+        return false;
+    }
+    else{
+        $resp = json_decode($curl['body']);
+        $feed_url = stripslashes_deep($resp->redirect_url);
+        return $resp ;exit;
+    }
+    ;
 }
 /* add sf tags */
 function sfsi_setUpfeeds($feed_id)
 {
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_URL => 'http://www.specificfeeds.com/rssegtcrons/download_rssmorefeed_data_single/' . $feed_id . "/Y",
-        CURLOPT_USERAGENT => 'sf rss request',
-        CURLOPT_POST => 0
+    $curl = wp_remote_get('https://www.specificfeeds.com/rssegtcrons/download_rssmorefeed_data_single/'.$feed_id."/Y", array(
+        'blocking' => true,
+        // 'CURLOPT_URL' => 'https://www.specificfeeds.com/rssegtcrons/download_rssmorefeed_data_single/'.$feed_id."/Y",
+        'user-agent' => 'sf rss request',
     ));
-    $resp = curl_exec($curl);
-    curl_close($curl);
+    return  ;
 }
 /* admin notice if wp_head is missing in active theme */
 function sfsi_check_wp_head()
@@ -1155,8 +1200,8 @@ function sfsi_rating_msg()
         <div class="sfwp_fivestar notice notice-success">
             <p>You've been using the Ultimate Social Media Plugin for more than 30 days. Great! If you're happy, could you please do us a BIG favor and let us know ONE thing we can improve in it?</p>
             <ul>
-                <li><a href="https://wordpress.org/support/plugin/ultimate-social-media-icons#new-topic-0" target="_new" title="Yes, that's fair, let me give feedback!">Yes, let me give feedback!</a></li>
-                <li><a target="_new" href="https://wordpress.org/support/plugin/ultimate-social-media-icons/reviews/?filter=5">No clue, let me give a 5-star rating instead</a></li>
+                <li><a href="https://wordpress.org/support/plugin/ultimate-social-media-icons#new-topic-0" target="new" title="Yes, that's fair, let me give feedback!">Yes, let me give feedback!</a></li>
+                <li><a target="new" href="https://wordpress.org/support/plugin/ultimate-social-media-icons/reviews/?filter=5">No clue, let me give a 5-star rating instead</a></li>
                 <li><a href="javascript:void(0);" class="sfsiHideRating" title="I already did">I already did (don't show this again)</a></li>
             </ul>
             <button type="button" class="plg-rating-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
@@ -1259,19 +1304,17 @@ function sfsi_pingVendor($post_id)
             'pubDate'   => $post_data['post_modified'],
             'rssurl'    => sfsi_get_bloginfo('rss2_url')
         );
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'http://www.specificfeeds.com/wordpress/addpostdata ',
-            CURLOPT_USERAGENT => 'sf rss request',
-            CURLOPT_POST => 1,
-            CURLOPT_POSTFIELDS => $postto_array
+        $curl = wp_remote_post('https://www.specificfeeds.com/wordpress/addpostdata ', array(
+            'blocking' => true,
+            // CURLOPT_URL => 'https://www.specificfeeds.com/wordpress/addpostdata ',
+            'user-agent' => 'sf rss request',
+            'body' => $postto_array
         ));
+        
         // Send the request & save response to $resp
-        $resp = curl_exec($curl);
-        $resp = json_decode($resp);
-        curl_close($curl);
+        // $resp = $curl['body'];
+        // $resp = json_decode($resp);
+        // curl_close($curl);
 
         return true;
     endif;

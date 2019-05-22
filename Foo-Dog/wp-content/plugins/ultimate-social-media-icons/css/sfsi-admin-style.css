@@ -118,6 +118,8 @@ ul#adminmenu li.toplevel_page_sfsi-options div.wp-menu-image {
 }
 #adminmenu li.toplevel_page_sfsi-options a.toplevel_page_sfsi-options {
     padding: 0 0 0 38px;
+    font-family: Arial, Helvetica, sans-serif !important;
+   
    /* font-family: helveticabold; */
 }
 ul#adminmenu li.toplevel_page_sfsi-options a.toplevel_page_sfsi-options {
@@ -126,16 +128,19 @@ ul#adminmenu li.toplevel_page_sfsi-options a.toplevel_page_sfsi-options {
     background: url(images/left_log_icn.png) 6px 15px no-repeat #000;
 	background: url(images/left_log_icn.png) 6px -43px no-repeat #444444;
     color: #e12522;
-   
+    font-family: Arial, Helvetica, sans-serif !important;
+    
 }
 ul#adminmenu li.toplevel_page_sfsi-options a.toplevel_page_sfsi-options:hover {
     background: url(images/left_log_icn.png) 6px -43px no-repeat #444444;
-	color: #e12522;
+    color: #e12522;
+    
 }
+
 ul#adminmenu li.toplevel_page_sfsi-options a.current, ul#adminmenu li.toplevel_page_sfsi-options a.current:hover {
     background: url(images/left_log_icn.png) 6px 15px no-repeat #000000;
     /*background: url(images/left_log_icn.png) 6px -43px no-repeat #444444;*/
-	color: #eee;
+	color: #e12522;
 }
 /*Tab1*/
 .tab1 ul.icn_listing {

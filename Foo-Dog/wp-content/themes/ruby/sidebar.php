@@ -10,11 +10,11 @@
 <aside id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
 	<div class="well">
 		<?php
-		if ( is_active_sidebar( 'sidebar-1' ) ) {
+		/* if ( is_active_sidebar( 'sidebar-1' ) ) {
 			dynamic_sidebar( 'sidebar-1' );
 		} else {
 			echo '<a href="' . admin_url( 'widgets.php' ) . '">' . __( 'Add widgets in the widget area.', 'ruby' ) . '</a>';
-		}
+		}*/
 		?>
 	</div><!-- .well -->
 </aside><!-- #secondary -->

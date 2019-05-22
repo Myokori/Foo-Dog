@@ -413,7 +413,7 @@ $option8['sfsi_form_button_background'] = (isset($option8['sfsi_form_button_back
 
     <!-- SAVE BUTTON SECTION   --> 
 	<div class="save_button">
-	     <img src="<?php echo SFSI_PLUGURL ?>images/ajax-loader.gif" class="loader-img" />
+	     <img src="<?php echo SFSI_PLUGURL ?>images/ajax-loader.gif" class="loader-img" alt="error" />
          <?php  $nonce = wp_create_nonce("update_step8"); ?>
 	    <a href="javascript:;" id="sfsi_save8" title="Save" data-nonce="<?php echo $nonce;?>">Save</a>
 	</div>

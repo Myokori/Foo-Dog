@@ -8,11 +8,8 @@
  */
 
 ?>
-<div class="row">
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="post-thumbnail">
-		<?php the_post_thumbnail( 'ruby-featured', array( 'class' => 'featured-image' ) ); ?>
-	</div><!-- .post-thumbnail -->
 	<header class="entry-header">
 		<?php
 		if ( is_sticky() && is_home() ) : ?>
@@ -34,13 +31,15 @@
 		endif; ?>
 	</header><!-- .entry-header -->
 
-	<!-- <div class="entry-content">
+	<div class="post-thumbnail">
+		<?php the_post_thumbnail( 'ruby-featured', array( 'class' => 'featured-image' ) ); ?>
+	</div><!-- .post-thumbnail -->
+
+	<div class="entry-content">
 		<?php ruby_archive_content(); ?>
 	</div><!-- .entry-content -->
 
-	<!--<footer class="entry-footer">
+	<footer class="entry-footer">
 		<?php ruby_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
-
 </article><!-- #post-## -->
-</div>

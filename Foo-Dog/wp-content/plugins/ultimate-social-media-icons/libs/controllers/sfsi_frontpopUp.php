@@ -215,7 +215,7 @@ function sfsi_FrontPopupDiv()
     ksort($icons_order);     /* short icons in order to display */
     $icons='<div class="sfsi_outr_div" > <div class="sfsi_FrntInner_chg" style="'.$style.'">';
 	//adding close button
-	$icons.='<div class="sfsiclpupwpr" onclick="sfsihidemepopup();"><img src="'.SFSI_PLUGURL.'images/close.png" /></div>';
+	$icons.='<div class="sfsiclpupwpr" onclick="sfsihidemepopup();"><img src="'.SFSI_PLUGURL.'images/close.png" alt="error" /></div>';
 	
 	 if(!empty($heading_text))
 	 {

@@ -1,9 +1,9 @@
-=== Social Media Share Buttons & Social Sharing Icons ===
+﻿=== Social Media Share Buttons & Social Sharing Icons ===
 Contributors: socialdude
 Tags: social media, share, buttons, social widget, icons, share icons, share buttons, sharing icons, sharing buttons, social share, sharing, social sharing
 Requires at least: 3.5
-Tested up to: 5.1
-Stable tag: 2.2.2
+Tested up to: 5.2
+Stable tag: 2.2.4
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -274,18 +274,26 @@ You cannot use the same plugin twice, however you can install both the USM as we
 
 
 == Changelog ==
+= 2.2.4 =
+* Solved: Unserialized error corrected.
+* Solved: All curl calls to wp_remote.
+
+= 2.2.3 =
+* Solved: Footer Error solved.
+* Solved: Removed most of the html errors.
+* Solved: Less anoying sidebar.
+
 = 2.2.2 =
-* Solved: More icons updated
+* Solved: More icons upadated
 * Solved: Icon backgrounds updated 
-* Solved: Custom icon upload issue
 
 = 2.2.1 =
-* Solved: Woocomerce conflict resolved
-* Solved: Alerts in case of conflict
-* New Feature: More icons for free plugin
+* Solved: woocomerce conflict resolved
+* Solved: alert in case on conflict.
+* new Feature: More icons for free plugin
 
 = 2.2.0 =
-* Solved: Critical Security Patch.
+ * Solved: Critical Security Patch.
 
 = 2.1.9 =
 * Solved: Security Patch.
@@ -784,5 +792,5 @@ You cannot use the same plugin twice, however you can install both the USM as we
 
 == Upgrade Notice ==
 
-= 2.2.2 =
+= 2.2.4 =
 Please upgrade

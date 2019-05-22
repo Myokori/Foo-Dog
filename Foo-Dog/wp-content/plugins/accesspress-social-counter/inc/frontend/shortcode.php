@@ -7,7 +7,7 @@ $cache_period = ($apsc_settings[ 'cache_period' ] != '') ? esc_attr( $apsc_setti
 $apsc_settings[ 'social_profile_theme' ] = isset( $atts[ 'theme' ] ) ? esc_attr( $atts[ 'theme' ] ) : esc_attr( $apsc_settings[ 'social_profile_theme' ] );
 $format = isset( $apsc_settings[ 'counter_format' ] ) ? esc_attr( $apsc_settings[ 'counter_format' ] ) : 'comma';
 ?>
-<div class="apsc-icons-wrapper clearfix apsc-<?php echo $apsc_settings[ 'social_profile_theme' ]; ?>" >
+<div class="bloc-social apsc-icons-wrapper clearfix apsc-<?php echo $apsc_settings[ 'social_profile_theme' ]; ?>" >
      <?php
      foreach ( $apsc_settings[ 'profile_order' ] as $social_profile ) {
           if ( isset( $apsc_settings[ 'social_profile' ][ $social_profile ][ 'active' ] ) && $apsc_settings[ 'social_profile' ][ $social_profile ][ 'active' ] == 1 ) {
@@ -22,8 +22,8 @@ $format = isset( $apsc_settings[ 'counter_format' ] ) ? esc_attr( $apsc_settings
                               ?>
                               <a  class="apsc-facebook-icon clearfix" href="<?php echo "https://facebook.com/" . $facebook_page_id; ?>" target="_blank" <?php do_action( 'apsc_facebook_link' ); ?>>
                                    <div class="apsc-inner-block">
-                                        <span class="social-icon"><i class="fa fa-facebook apsc-facebook"></i><span class="media-name">Facebook</span></span>
-                                        <span class="apsc-count"><?php echo $count; ?></span><span class="apsc-media-type">Fans</span>
+                                        <span class="social-icon"><i class="fa fa-facebook apsc-facebook"></i><span class="apsc-count"><?php echo $count; 													?></span><span class="media-name">Fans</span><span class="media-name media-like">Like</span></span>
+										<span class="apsc-media-type">Fans</span>
                                    </div>
                               </a>
                               <?php
@@ -32,8 +32,8 @@ $format = isset( $apsc_settings[ 'counter_format' ] ) ? esc_attr( $apsc_settings
                               ?>
                               <a  class="apsc-twitter-icon clearfix"  href="<?php echo 'https://twitter.com/' . $apsc_settings[ 'social_profile' ][ 'twitter' ][ 'username' ]; ?>" target="_blank"  <?php do_action( 'apsc_twitter_link' ); ?>>
                                    <div class="apsc-inner-block">
-                                        <span class="social-icon"><i class="fa fa-twitter apsc-twitter"></i><span class="media-name">Twitter</span></span>
-                                        <span class="apsc-count"><?php echo $count; ?></span><span class="apsc-media-type">Followers</span>
+                                        <span class="social-icon"><i class="fa fa-twitter apsc-twitter"></i><span class="apsc-count"><?php echo $count; ?></span><span class="media-name">Followers</span><span class="media-name media-follow">Follow</span></span>
+                                        <span class="apsc-media-type">Followers</span>
                                    </div>
                               </a>
                               <?php
@@ -56,8 +56,8 @@ $format = isset( $apsc_settings[ 'counter_format' ] ) ? esc_attr( $apsc_settings
                               ?>
                               <a  class="apsc-instagram-icon clearfix" href="<?php echo $social_profile_url; ?>" target="_blank"   <?php do_action( 'apsc_instagram_link' ); ?>>
                                    <div class="apsc-inner-block">
-                                        <span class="social-icon"><i class="apsc-instagram fa fa-instagram"></i><span class="media-name">Instagram</span></span>
-                                        <span class="apsc-count"><?php echo $count; ?></span><span class="apsc-media-type">Followers</span>
+                                        <span class="social-icon"><i class="apsc-instagram fa fa-instagram"></i><span class="apsc-count"><?php echo $count; ?></span><span class="media-name">Followers</span><span class="media-name media-follow">Follow</span></span>
+                                        <span class="apsc-media-type">Followers</span>
                                    </div>
                               </a>
                               <?php
