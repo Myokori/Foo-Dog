@@ -46,24 +46,25 @@
 									</button>
 									<a class="navbar-brand singleTitle" href="index.php">FooDog</a>										
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="http://localhost/foodog/?cat=2">Nutrition</a></li>
-                <li><a href="http://localhost/foodog/?cat=4">Lifestyle</a></li>
-                <li><a href="http://localhost/foodog/?cat=3">Wellness</a></li>
-				<li><a href="http://localhost/foodog/?cat=5">Community</a></li>
-					</div>															
-				</div>
-				</div>
-				<div class="col-lg-4 middle mid-form">
-					<?php echo do_shortcode("[mc4wp_form id='165']"); ?>
-				</div>
-				<div class="col-lg-4 right">
-					<div>
-						<img src="https://www.zupimages.net/up/19/21/1i49.png" class="img-nav">																
+									<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+										<ul class="nav navbar-nav">
+											<li class="active"><a href="index.php">Home</a></li>
+											<li><a href="http://localhost/foodog/?cat=2">Nutrition</a></li>
+											<li><a href="http://localhost/foodog/?cat=4">Lifestyle</a></li>
+											<li><a href="http://localhost/foodog/?cat=3">Wellness</a></li>
+											<li><a href="http://localhost/foodog/?cat=5">Community</a></li>
+										</ul>
+									</div>															
+								</div>
+						</div>
+							<div class="col-lg-4 middle mid-form">
+								<?php echo do_shortcode("[mc4wp_form id='165']"); ?>
+							</div>
+					<div class="col-lg-4 right">
+						<div>
+							<img src="https://www.zupimages.net/up/19/21/1i49.png" class="img-nav">																
+						</div>
 					</div>
-				</div>
 				</div>
 
 			</header><!-- #masthead -->
