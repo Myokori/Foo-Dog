@@ -18,6 +18,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<?php wp_head(); ?>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body <?php body_class(); ?>>
@@ -30,30 +31,39 @@
 			<?php } ?>
 				<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'ruby'); ?></a>
 
-				<header id="masthead" class="site-header" role="banner">
-					<div class="header-nav-wrapper <?php if ($fixed_navigation) {
+				<header id="masthead" class="site-header header-single" role="banner">
+					<div class="header-nav <?php if ($fixed_navigation) {
 																					echo 'm-fix';
 																				} ?>">
-					<div class="container">
-						<div class="row">
-							<nav id="site-navigation" class="main-navigation" role="navigation">
-								<button id="menu-toggle" class="monpéni" type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse"><?php _e('Menu', 'ruby'); ?></button>
-									<div class="col-sm-12">
-										<?php
-										ruby_header_menu(); // Main navigation MENU A TRANSFORMER EN BURGER 
-										?>
-									</div>
-							</nav><!-- #site-navigation -->
-						</div><!-- .row -->
-					</div><!-- .container -->
-				</div><!-- .header-nav-wrapper -->
-					<h1 class="titleSingle">FooDog</h1>
+				<div class="row">
+					<div class="col-lg-4 left">
+						<nav class="navbar navbar-default" role="navigation">
+							
+								<div class="navbar-header burgerSingle">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+										<span class="sr-only">Toggle navigation</span>
+										<i class="fas fa-bars"></i>																	
+									</button>
+									<a class="navbar-brand singleTitle" href="index.php">FooDog</a>										
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                <li class="active"><a href="index.php">Home</a></li>
+                <li><a href="http://localhost/foodog/?cat=2">Nutrition</a></li>
+                <li><a href="http://localhost/foodog/?cat=4">Lifestyle</a></li>
+                <li><a href="http://localhost/foodog/?cat=3">Wellness</a></li>
+				<li><a href="http://localhost/foodog/?cat=5">Community</a></li>
+					</div>															
 				</div>
-				<div class="col-lg-4 middle">
-					test
+				</div>
+				<div class="col-lg-4 middle mid-form">
+					<?php echo do_shortcode("[mc4wp_form id='165']"); ?>
 				</div>
 				<div class="col-lg-4 right">
-					test
+					<div>
+						<img src="https://www.zupimages.net/up/19/21/1i49.png" class="img-nav">																
+					</div>
+				</div>
 				</div>
 
 			</header><!-- #masthead -->
