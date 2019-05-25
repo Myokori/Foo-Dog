@@ -1,0 +1,449 @@
+/*
+Theme Name: ruby_v2
+Description: Thème Foo Dog
+Author: Woods Students
+Template: ruby
+Version: 1.0
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text:400,600|Open+Sans:400,700,800&display=swap");
+
+/*font-family: 'Open Sans', sans-serif;*/
+/* font-family: 'Crimson Text', serif;*/
+
+/* Modification background body */
+body {
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+
+/* Modification du nav social */
+.header-top-nav, .header-nav-wrapper, .search-menu .search-form{
+    border:0;
+    box-shadow: none;
+    margin-top:3rem;
+}
+.fa-instagram{
+    margin-right:-0.5rem;
+}
+.fa-search{
+    margin-left:0.6rem;
+}
+/* Modification du background ET du titre */
+.site-header{
+    background-color: #fff !important;
+}
+.site-branding .site-title{
+    font-weight:600;
+    font-family: 'Crimson Text', serif;
+    font-size:64px;
+    margin-top:-3rem;
+}
+.site-title a{
+    color:black !important;
+}
+/* Modification du nav category */
+nav{
+	font-family: 'Crimson Text', serif;
+	color:black;	
+}
+.header-nav-wrapper{
+	box-shadow:0 0 0;
+}
+.main-navigation .navbar-nav {
+	width: 100%;
+	text-align: center;
+    /* font-weight:bold; */
+    margin-top:-2rem;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+}
+.navbar-nav > li {
+	float: none;
+    display: inline-block;
+}
+#site-navigation .col-sm-12 .navbar-toggleable-xs{
+	float:none;
+    border-bottom:1px solid rgba(128,128,128, .2);
+}
+.ico-top {
+  color: black;
+  margin-top:1.15rem;
+}
+.search-menu{
+    border-left:1px solid rgba(245,245,245,1);
+}
+.search-menu > span{
+    color:black;
+}
+.main-navigation .navbar-nav{
+    text-align:center;
+}
+/* Modifcation du premier bloc de posts */
+.main-post {
+  text-align: center;
+}
+.terms .pt-cv-tax-nutrition,
+.pt-cv-tax-lifestyle,
+.pt-cv-tax-wellness,
+.pt-cv-tax-community,
+.pt-cv-tax-featured {
+  color: #ff8c6a !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+#pt-cv-view-5f2006etas .pt-cv-title a,
+#pt-cv-view-5f2006etas .panel-title {
+  color: #4c5055;
+}
+#pt-cv-view-647edc0803 .pt-cv-title a,
+#pt-cv-view-647edc0803 .panel-title {
+  color: #4c5055;
+}
+
+/* Modification du social count */
+.apsc-theme-4 .apsc-each-profile{
+    float:none;
+    margin:0.2rem;
+    font-family: 'Crimson Text', serif;   
+}
+.apsc-theme-4 .apsc-each-profile a{
+    border-radius:0;
+    padding:0.75rem;
+}
+.apsc-theme-4 .media-name{
+    font-size:18px;
+    font-weight:bold;
+}
+.apsc-theme-4 .social-icon .fa{
+    margin-right:0.2rem;
+}
+.apsc-inner-block .media-like{
+    padding-left:10rem;
+    text-transform: uppercase;
+    font-size:15px;
+    font-family: "Open Sans", sans-serif;
+    font-weight:800;
+}
+.apsc-inner-block .media-follow{
+    padding-left:4.8rem;
+    text-transform: uppercase;
+    font-size:15px;
+    font-family: "Open Sans", sans-serif;
+    font-weight:800;
+}
+.apsc-count{
+    padding-left:1rem;
+    font-size:15px;
+}
+.bloc-social{
+    margin-top:8rem;
+}
+@media screen and (max-width:768px){
+    .bloc-social{
+        display:none;
+    }
+}
+/* Modification de l'image en dessous du social count */
+.right-img{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:5rem;
+}
+/* Modification du séparateur au top de la seconde section de posts */
+.featured{
+    text-transform: uppercase;
+    font-size:15px;
+    font-family: "Open Sans", sans-serif;
+    font-weight:800;
+    margin-top:5rem;
+}
+.feat-hr{
+    width:75%;
+    margin-top:-0.75rem;
+    margin-left:10rem;
+    height:1px;
+}
+@media screen and (max-width:768px){
+    .featured{
+        text-align:center;
+        font-size:32px;
+    }
+    .feat-hr{
+        display:none;
+    }
+}
+/* Modification des featured posts */
+.feat-post{
+    color: #f8f8f8;
+    margin-top:2rem;
+    margin-bottom:2rem;
+}
+.pagination{
+    display:none;
+}
+
+/* Pagination lastest posts */
+.pt-cv-wrapper .text-left{
+    text-align: center;
+    font-family: 'Crimson Text', serif; 
+}
+.cv-pageitem-prev{
+    display:none !important;
+}
+.pt-cv-wrapper .pagination > li > a, .pt-cv-wrapper .pagination > li > span, .pt-cv-wrapper .pagination > li:last-child > a, .pt-cv-wrapper .pagination > li:last-child > span{
+    border-radius:50% !important;
+}
+
+
+
+/* Left footer col */
+.left-footer{
+    color:white;
+}
+
+/* Modification des pages de catégories */
+.jumbotron{
+    background-color: #f7f7f7;
+    padding:1.7rem;
+    text-align:center;
+    text-transform: uppercase;
+    font-size:22px;
+    color:black;
+    letter-spacing:0.2rem;
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* Modification style formulaire Mail */
+.mc4wp-form-fields{
+    margin-top:1.2rem;
+}
+
+.mc4wp-form-fields .btnMail{
+	padding: 10px;
+	margin-left: -6px;
+	background-color: black;
+	color: white;
+}
+
+.mc4wp-form-fields .inputMail{
+	border: 2px solid black;
+}
+
+/* Modifications Header-single */
+
+.left-single{
+    float:left;
+}
+.middle-single{
+    text-align:center;
+}
+.right-single{
+    text-align:right;
+}
+.single-header{
+    border-bottom:2px solid rgba(230,230,230,1);
+}
+
+/* Modifications hamburger menu */
+.bar-color{
+    color:black;
+}
+.navbar-brand{
+    color:black !important;
+    font-size:28px;
+}
+.navbar-nav > li a{
+    color:black;
+/*     margin-left:2.5rem;
+    font-size:16px; */
+}
+
+/* Modification colonne droite header-single */
+.single-img{
+    width:10%;
+}
+.search-single{
+    margin-top:2rem;
+    margin-right:2rem;
+}
+
+@media screen and (max-width:768px){
+    .mc4wp-form-fields{
+        display:none;
+    }
+    .right-single{
+        display:none;
+    }
+}
+
+/* Modif social counter */
+.media-tag-like, .media-tag-follow{
+    float:right;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:800;
+    text-transform: uppercase;
+}
+
+/* Icones sociales footer */
+.menu-item-168{
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    padding-left:0.75rem;
+    padding-right:0.75rem;
+    background-color: #3A3E43;
+    border-radius:50%;
+    color:white;
+}
+.menu-item-169{
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    padding-left:0.6rem;
+    padding-right:0.6rem;
+    background-color: #3A3E43;
+    border-radius:50%;
+    color:white;
+}
+.menu-item-170{
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    padding-left:0.6rem;
+    padding-right:0.6rem;
+    background-color: #3A3E43;
+    border-radius:50%;
+    color:white;
+}
+
+/* Single page social menu right */
+.twitter-single{
+    margin:0.5rem;
+    padding-top:0.75rem;
+    padding-bottom:0.75rem;
+    padding-left:0.65rem;
+    padding-right:0.65rem;
+    background-color: #3A3E43;
+    border-radius:50%;
+    color:white;
+}
+.fb-single{
+    margin:0.5rem;
+    padding-top:0.75rem;
+    padding-bottom:0.75rem;
+    padding-left:0.85rem;
+    padding-right:0.85rem;
+    background-color: #3A3E43;
+    border-radius:50%;
+    color:white;
+}
+
+.insta-single{
+    margin:0.5rem;
+    padding-top:0.75rem;
+    padding-bottom:0.75rem;
+    padding-left:0.75rem;
+    padding-right:0.75rem;
+    background-color: #3A3E43;
+    border-radius:50%;
+    color:white;
+}
+
+.pint-single{
+    margin:0.5rem;
+    padding-top:0.75rem;
+    padding-bottom:0.75rem;
+    padding-left:0.75rem;
+    padding-right:0.75rem;
+    background-color: #3A3E43;
+    border-radius:50%;
+    color:white;
+    margin-bottom:2rem;
+}
+.right-side-single{
+    margin-top:3rem;
+    text-align:center;
+}
+
+.follow-us{
+    text-transform: uppercase;
+    margin-bottom:0;
+}
+
+/* Modification style articles */
+
+article{
+    border:0;
+}
+.cat-name{
+    color:#ff8c6a;
+    font-weight: bold;
+    text-transform:uppercase;
+    text-align: center;
+}
+.entry-title{
+    color:#4b4f54;
+}
+.hidden-share{
+    display:none;
+}
+
+.soc-txt-single{
+    font-size:10px;
+}
+.single-img-soc{
+    width:35px;
+    margin-top:0.1rem;
+}
+.soc-border{
+    border-top:1px solid lightgrey;
+    border-bottom:1px solid lightgrey;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    margin-left:0.2rem;
+    margin-right:0.2rem;
+}
+
+.sfsi_Sicons{
+    text-align:center !important;
+}
+.label-newsletter{
+    color:black;
+    text-align: center;
+    margin-top:7rem !important;
+}
+.sous-titre{
+    text-align:center;
+    margin:1.5rem;
+}
+.postMail{
+    border:1px solid #ff8c6a !important;
+}
+.postBtn{
+    background-color:#ff8c6a !important;
+    color:white !important;
+    margin-left:-6px;
+}
+.social-footer-post{
+    text-align: center !important;
+}
+
+
+.random-text img{
+    width:60%;
+    margin-top:1rem;
+    margin-bottom:5rem;
+}
+.img-float{
+    float:left;
+    width:150px;
+}
+.img-txt{
+    margin-top:3rem;
+}
+
+.separator{
+    margin-top:4rem;
+}
